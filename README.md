@@ -4,7 +4,7 @@
 ### **WM**: [Hyprland](https://github.com/hyprwm/Hyprland)
 ### **Shell**: [Fish](https://github.com/fish-shell/fish-shell)
 ### **Terminal**: [Kitty](https://github.com/kovidgoyal/kitty)
-### **Editor**: [Neovim](hhttps://github.com/dknlinh/kickstart-custom.nvim)
+### **Editor**: [Neovim](https://github.com/dknlinh/kickstart-custom.nvim)
 
 ## Using with stow
 
