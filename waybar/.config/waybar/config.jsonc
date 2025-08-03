@@ -1,0 +1,20 @@
+{
+	"layer": "top", // Waybar at top layer
+	"position": "top", // Waybar position (top|bottom|left|right)
+	"name": "main",
+	"modules-left": [
+		// "custom/l_border", "tray", "custom/r_border",
+		"group/pill#taskbar",
+		"custom/l_border",
+		"clock",
+		"custom/r_border"
+	],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": [
+		"group/audio",
+		"group/hardware-monitor",
+		"group/connection",
+		"group/pill#power"
+	],
+	"include": ["~/.config/waybar/modules.jsonc"]
+}

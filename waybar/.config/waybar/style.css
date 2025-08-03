@@ -1,0 +1,181 @@
+@import "mocha.css";
+
+@define-color transparent-bg rgba(24, 24, 37, 0);
+@define-color module-bg      rgba(49, 50, 68, 0.7);
+@define-color normal         @pink;
+@define-color warning        @yellow;
+@define-color critical       @red;
+
+* {
+  font-family: "FiraCode Nerd Font";
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* Main bar keyframes */ /* {{{ */
+/* Keyframes for main bar criticals */
+@keyframes blink-critical-text {
+  to {
+    color: @warning;
+  }
+} /* }}} */
+
+window#waybar {
+  background: @transparent-bg;
+  border-radius: 8px;
+}
+
+window#waybar.main .modules-left,
+window#waybar.main .modules-center,
+window#waybar.main .modules-right {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+#pill {
+  color: @text;
+  background: @module-bg;
+  border-radius: 20px 20px 20px 20px;
+  padding: 0px 8px;
+  margin: 4px 4px;
+}
+
+#pill.power {
+  padding: 0px 6px 0px 10px;
+}
+
+#tray,
+#workspaces,
+#pulseaudio,
+#custom-mic,
+#cpu,
+#memory,
+#temperature,
+#network,
+#bluetooth,
+#power-profiles-daemon,
+#clock,
+#custom-r_border,
+#custom-l_border {
+  color: @text;
+  background: @module-bg;
+  margin: 4px 0px 4px 0px;
+  padding: 0px 4px;
+}
+
+#custom-r_border {
+  border-radius: 0px 20px 20px 0px;
+  margin-right: 4px;
+  padding-right: 4px;
+}
+
+#custom-l_border {
+  border-radius: 20px 0px 0px 20px;
+  margin-left: 4px;
+  padding-left: 4px;
+}
+
+/* Modules color */ /* {{{ */
+#custom-mic,
+#pulseaudio {
+  color: @sky;
+}
+
+#custom-mic.muted,
+#pulseaudio.output.muted,
+#pulseaudio.input.source-muted {
+  color: @subtext0;
+}
+
+#custom-mic.inactive {
+  color: @overlay0;
+}
+
+#cpu,
+#memory,
+#temperature {
+  color: @normal;
+}
+
+#bluetooth {
+  color: @blue;
+}
+#bluetooth.disabled {
+  color: @overlay0;
+}
+
+#network {
+  color: @green;
+}
+
+#custom-power {
+  color: @red;
+}/* }}} */
+
+/* Modules critical */ /* {{{ */
+#waybar.main #cpu.critical,
+#waybar.main #memory.ram.critical,
+#waybar.main #temperature.critical {
+  color: @surface2;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-name: blink-critical-text;
+  animation-duration: 1s;
+  animation-timing-function: steps(15);
+}
+/* }}} */
+
+/* Taskbar */ /* {{{ */
+#taskbar button {
+  padding: 4px 4px;
+  margin: 4px 2px;
+  border-radius: 50%;
+}
+
+#taskbar button.active {
+  background-color: @surface2;
+  transition: all 0.1s linear;
+}
+/* }}} */
+
+/* Workspace */ /* {{{ */
+#workspaces {
+  padding: 0px 8px;
+  border-radius: 20px;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+  margin-right: 0.3em;
+  animation: tb_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(.55, -0.68, .48, 1.682);
+}
+
+#workspaces button {
+  padding: 0px 4px;
+  margin: 4px 2px;
+  border-radius: 20px;
+  transition: all 0.1s linear;
+  opacity: 0.4;
+}
+
+#workspaces button.active {
+  color: @mauve;
+  background: @surface2;
+  min-width: 30px;
+  transition: all 0.1s linear;
+  opacity: 1;
+}
+
+#workspaces button:hover {
+  color: @mauve;
+  background: @surface1;
+  opacity: 0.7;
+} /* }}} */
+
+

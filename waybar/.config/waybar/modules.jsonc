@@ -1,0 +1,244 @@
+{
+	"hyprland/workspaces": {
+		"format": "{name}",
+		// "format": "{name}{icon}",
+		// "format-icons": {
+		//   "1": "  ",
+		//   "2": "  ",
+		//   "default": ""
+		// },
+		"persistent-workspaces": {
+			"*": [1, 2, 3, 4, 5]
+		}
+	},
+
+	"tray": {
+		"icon-size": 16,
+		"rotate": 0,
+		"spacing": 4
+	},
+
+	"hyprland/window": {
+		"format": "<span weight='bold'>{class}</span>",
+		"max-length": 120,
+		"icon": false
+	},
+
+	"group/pill#taskbar": {
+		"orientation": "inherit",
+		"modules": ["wlr/taskbar"]
+	},
+
+	"wlr/taskbar": {
+		"all-outputs": false,
+		"active-first": false,
+		"markup": true,
+		"format": "{icon}",
+		"rotate": 0,
+		"icon-size": 12,
+		"spacing": 0,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close"
+	},
+
+	"group/audio": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/l_border",
+			"pulseaudio#output",
+			// "pulseaudio#input",
+			"custom/mic",
+			"custom/r_border"
+		]
+	},
+
+	"pulseaudio#output": {
+		"format": "{icon} {volume}%",
+		"format-bluetooth": "{icon}  {volume}%",
+		"format-muted": "󰖁 {volume}%",
+		"format-icons": {
+			"headphone": "",
+			"hands-free": "",
+			"headset": "",
+			"phone": "",
+			"portable": "",
+			"car": "",
+			"default": [" ", " ", " "]
+		},
+		"on-click": "wpctl set-mute @DEFAULT_SINK@ toggle",
+		"tooltip": false,
+		"scroll-step": 5
+	},
+
+	"pulseaudio#input": {
+		"format": "{format_source}%",
+		"format-source": " {volume}",
+		"format-source-muted": " {volume}",
+		"on-scroll-up": "sh -c 'vol=$(wpctl get-volume @DEFAULT_SOURCE@ | grep -oP \"[0-1]\\.[0-9]{2}\" | head -1); vol_percent=$(awk \"BEGIN {print int($vol * 100)}\"); if [ \"$vol_percent\" -lt 100 ]; then wpctl set-volume @DEFAULT_SOURCE@ 5%+; fi'",
+		"on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+		"max-volume": "100",
+		"on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+		"tooltip": false
+	},
+	// "custom/mic": {
+	//   "format": "{icon} {text}%",
+	//   "return-type": "json",
+	//   "exec": "~/.config/waybar/mic.sh",
+	//   "interval": 5,
+	//   "on-scroll-up": "sh -c 'vol=$(wpctl get-volume @DEFAULT_SOURCE@ | grep -o \"[0-1]\\.[0-9][0-9]\" | head -1); vol_percent=$(awk \"BEGIN {print int($vol * 100)}\"); if [ \"$vol_percent\" -lt 100 ]; then wpctl set-volume @DEFAULT_SOURCE@ 5%+; fi'",
+	//   "on-scroll-down": "wpctl set-volume @DEFAULT_SOURCE@ 5%-",
+	//   "on-click": "wpctl set-mute @DEFAULT_SOURCE@ toggle",
+	//   "tooltip": false,
+	//   "format-icons": {
+	//     "muted": " ",
+	//     "unmuted": "",
+	//     "default": ""
+	//   }
+	// },
+	"custom/mic": {
+		"format": "{icon} {text}%",
+		"return-type": "json",
+		"exec": "~/.config/waybar/mic_control.sh --action display",
+		"interval": 5,
+		"on-scroll-up": "~/.config/waybar/mic_control.sh --action increase",
+		"on-scroll-down": "~/.config/waybar/mic_control.sh --action decrease",
+		"on-click": "~/.config/waybar/mic_control.sh --action toggle",
+		"tooltip": false,
+		"format-icons": {
+			"muted": " ",
+			"unmuted": "",
+			"default": ""
+		}
+	},
+
+	"group/hardware-monitor": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/l_border",
+			"cpu",
+			"memory#ram",
+			"temperature",
+			"custom/r_border"
+		]
+	},
+
+	"cpu": {
+		"format": "  {usage}% ",
+		"states": {
+			"warning": 80,
+			"critical": 95
+		},
+		"on-click": "kitty btop &"
+	},
+
+	"memory#ram": {
+		"format": "  {percentage}% ",
+		"states": {
+			"warning": 80,
+			"critical": 95
+		},
+		"tooltip": "{}",
+		"tooltip-format": "{used}/{total} GiB"
+	},
+
+	"temperature": {
+		"interval": 10,
+		"hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input", // cpu temp, depend on your system
+		"critical-threshold": 95,
+		"format": "{icon} {temperatureC}°C",
+		"format-icons": ["", "", "", "", ""],
+		"tooltip": false
+	},
+
+	"group/connection": {
+		"orientation": "horizontal",
+		"modules": ["custom/l_border", "network", "bluetooth", "custom/r_border"]
+	},
+
+	"network": {
+		"format": "{ifname}",
+		"format-wifi": "{icon} ",
+		"format-ethernet": "󰌘",
+		"format-disconnected": "󰌙",
+		"tooltip-format": "{ipaddr}  {bandwidthUpBits}  {bandwidthDownBits}",
+		"format-linked": "󰈁 {ifname} (No IP)",
+		"tooltip-format-wifi": "{essid} {icon} {signalStrength}%",
+		"tooltip-format-ethernet": "{ifname} 󰌘",
+		"tooltip-format-disconnected": "󰌙 Disconnected",
+		"max-length": 30,
+		"format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+		"on-click": "kitty nmtui"
+	},
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format": "󰂯",
+		"format-connected": "󰂱 {num_connections}",
+		"tooltip": false,
+		"on-click": "blueman-manager"
+	},
+
+	"clock": {
+		"format": "{:%A %d/%m - %I:%M %p}",
+		"format-alt": "{:L%I:%M:%S %p}",
+		"interval": 1,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"smooth-scrolling-threshold": 0.01,
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"weeks-pos": "right",
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#ffead3'><b>{}</b></span>",
+				"days": "<span color='#ecc6d9'><b>{}</b></span>",
+				"weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+				"weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+				"today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "mode",
+			"on-scroll-up": "shift_up",
+			"on-scroll-down": "shift_down"
+		}
+	},
+
+	"power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+		"tooltip": true,
+		"format-icons": {
+			"default": "",
+			"performance": "",
+			"balanced": "",
+			"power-saver": ""
+		}
+	},
+
+	"group/pill#power": {
+		"orientation": "inherit",
+		"modules": ["custom/power"]
+	},
+
+	"custom/power": {
+		"tooltip": true,
+		"on-click": "~/.config/rofi/powermenu.sh",
+		// "on-click": "~/.config/hypr/scripts/wlogout.sh",
+		"format": " ",
+		"tooltip-format": "Power Menu"
+	},
+
+	"custom/l_border": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	},
+
+	"custom/r_border": {
+		"format": " ",
+		"interval": "once",
+		"tooltip": false
+	}
+}

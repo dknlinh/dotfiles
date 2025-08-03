@@ -1,0 +1,128 @@
+@import "colors"
+
+configuration {
+  show-icons:                 false;
+}
+
+* {
+  font: "FiraCode Nerd Font 16";
+}
+
+/*****----- Main Window -----*****/
+window {
+  transparency:                "real";
+  location:                    center;
+  anchor:                      center;
+  fullscreen:                  false;
+  width:                       800px;
+  x-offset:                    0px;
+  y-offset:                    0px;
+
+  padding:                     0px;
+  border:                      2px solid;
+  border-radius:               30px;
+  border-color:                @alternate-normal-background;
+  cursor:                      "default";
+  background-color:            @background;
+}
+
+/*****----- Main Box -----*****/
+mainbox {
+  background-color:            transparent;
+  orientation:                 horizontal;
+  children:                    [ "imagebox", "listview" ];
+}
+
+/*****----- Imagebox -----*****/
+imagebox {
+    spacing:                     0px;
+    padding:                     30px;
+    background-color:            transparent;
+    background-image:            url("~/.config/rofi/images/blackhole_3.png", width);
+    children:                    [ "inputbar", "dummy", "message" ];
+}
+
+/*****----- User -----*****/
+userimage {
+    margin:                      0px 0px;
+    border:                      10px;
+    border-radius:               10px;
+    border-color:                @alternate-normal-background;
+    background-color:            transparent;
+    background-image:            url("~/.config/rofi/images/blackhole_3.png", height);
+}
+
+/*****----- Inputbar -----*****/
+inputbar {
+  padding:                     15px;
+  border-radius:               30px;
+  background-color:            rgba(203, 166, 247, 0.9);
+  text-color:                  @background;
+  children:                    [ "dummy", "prompt", "dummy" ];
+}
+
+dummy {
+  background-color:            transparent;
+}
+
+prompt {
+  background-color:            transparent;
+  text-color:                  inherit;
+}
+
+/*****----- Message -----*****/
+message {
+  enabled:                     true;
+  padding:                     10px;
+  margin:                      0px;
+  border-radius:               30px;
+  background-color:            @alternate-active-background;
+  text-color:                  @foreground;
+}
+textbox {
+  background-color:            transparent;
+  text-color:                  inherit;
+  vertical-align:              0.5;
+  horizontal-align:            0.5;
+}
+
+/*****----- Listview -----*****/
+listview {
+  enabled:                     true;
+  columns:                     3;
+  lines:                       2;
+  cycle:                       true;
+  dynamic:                     true;
+  scrollbar:                   false;
+  layout:                      vertical;
+  reverse:                     false;
+  fixed-height:                true;
+  fixed-columns:               true;
+
+  spacing:                     30px;
+  margin:                      30px;
+  background-color:            transparent;
+  cursor:                      "default";
+}
+
+/*****----- Elements -----*****/
+element {
+  enabled:                     true;
+  padding:                     18px 10px;
+  border-radius:               30px;
+  background-color:            @alternate-normal-background;
+  text-color:                  @foreground;
+  cursor:                      pointer;
+}
+element-text {
+  background-color:            transparent;
+  text-color:                  inherit;
+  cursor:                      inherit;
+  vertical-align:              0.5;
+  horizontal-align:            0.5;
+}
+element selected.normal {
+  background-color:            var(mauve);
+  text-color:                  var(background);
+}
+

@@ -1,0 +1,80 @@
+@import "catppuccin-mocha.css";
+
+* {
+  font-family: "Fira Code Medium";
+  background-image: none;
+  box-shadow: none;
+}
+
+window {
+  background-color: rgba(24, 24, 37, 0.9);
+  font-size: 16px;
+}
+
+button {
+  border: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  background-color: transparent;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0 10px 2px transparent;
+  border-radius: 36px;
+  margin: 10px;
+}
+
+button:focus {
+  box-shadow: none;
+  background-size : 20%;
+}
+
+button:hover {
+  background-color: @mauve;
+  box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
+  background-size: 50%;
+  color: transparent;
+  transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+#lock {
+  background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+  background-image: image(url("./icons/lock_hover.png"));
+}
+
+#logout {
+  background-image: image(url("./icons/log-out.png"));
+}
+#logout:hover {
+  background-image: image(url("./icons/log-out_hover.png"));
+}
+
+#suspend {
+	background-image: image(url("./icons/suspend.png"));
+}
+#suspend:hover {
+  background-image: image(url("./icons/suspend_hover.png"));
+}
+
+#hibernate {
+	background-image: image(url("./icons/hibernate.png"));
+}
+#hibernate:hover {
+  background-image: image(url("./icons/hibernate_hover.png"));
+}
+
+#shutdown {
+	background-image: image(url("./icons/shutdown.png"));
+}
+#shutdown:hover {
+  background-image: image(url("./icons/shutdown_hover.png"));
+}
+
+#reboot {
+	background-image: image(url("./icons/reboot.png"));
+}
+#reboot:hover {
+  background-image: image(url("./icons/reboot_hover.png"));
+}

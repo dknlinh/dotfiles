@@ -1,0 +1,30 @@
+@import "catppuccin-mocha"
+
+* {
+  selected-active-foreground:  @background;
+  lightfg:                     @text;
+  separatorcolor:              @foreground;
+  urgent-foreground:           @red;
+  alternate-urgent-background: @lightbg;
+  lightbg:                     rgba(49, 50, 68, 0.7); // @surface0;
+  background-color:            transparent;
+  border-color:                @foreground;
+  normal-background:           @background;
+  selected-urgent-background:  @red;
+  alternate-active-background: @lightbg;
+  spacing:                     2;
+  alternate-normal-foreground: @foreground;
+  urgent-background:           @background;
+  selected-normal-foreground:  @lightbg;
+  active-foreground:           @blue;
+  background:                  @base;
+  selected-active-background:  @blue;
+  active-background:           @background;
+  selected-normal-background:  @lightfg;
+  alternate-normal-background: @lightbg;
+  foreground:                  @text;
+  selected-urgent-foreground:  @background;
+  normal-foreground:           @foreground;
+  alternate-urgent-foreground: @red;
+  alternate-active-foreground: @blue;
+}
