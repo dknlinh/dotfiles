@@ -1,0 +1,20 @@
+[[session]]
+name = "Downloads 📥"
+path = "~/Downloads"
+startup_command = "yazi"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+
+[[session]]
+name = "sesh config"
+path = "~/dotfiles/sesh/.config/sesh"
+startup_command = "nvim sesh.toml"
+preview_command = "bat -language=toml --style=snip -color=always ~/dotfiles/sesh/.config/sesh/sesh.toml"
+
+[[session]]
+name = "tmux config"
+path = "~/dotfiles/tmux"
+startup_command = "nvim .tmux.toml"
+preview_command = "bat -language=toml --style=snip -color=always ~/dotfiles/tmux/.tmux.toml"
