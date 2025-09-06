@@ -11,10 +11,15 @@ path = "~/dotfiles"
 name = "sesh config"
 path = "~/dotfiles/sesh/.config/sesh"
 startup_command = "nvim sesh.toml"
-preview_command = "bat -language=toml --style=snip -color=always ~/dotfiles/sesh/.config/sesh/sesh.toml"
+preview_command = "bat --language=toml --style=snip --color=always ~/dotfiles/sesh/.config/sesh/sesh.toml"
 
 [[session]]
 name = "tmux config"
 path = "~/dotfiles/tmux"
-startup_command = "nvim .tmux.toml"
-preview_command = "bat -language=toml --style=snip -color=always ~/dotfiles/tmux/.tmux.toml"
+startup_command = "nvim .tmux.conf"
+preview_command = "bat --language=bash --style=snip --color=always ~/dotfiles/tmux/.tmux.conf"
+
+[[session]]
+name = "astro-example"
+path = "~/astro-example"
+startup_command = "~/.config/sesh/scripts/bun_dev"

@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+tmux new-window -n "bun-dev" "bun run dev"
+tmux last-window
+tmux send-keys -t . "nvim" Enter ":Telescope find_files" Enter
