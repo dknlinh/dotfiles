@@ -1,0 +1,6 @@
+[general]
+fullscreen = true
+initial-tool = "crop"
+output-filename = "screenshot-%Y%m%d-%H%M%S.png"
+actions-on-enter = ["save-to-clipboard", "exit"]
+actions-on-escape = ["exit"]
